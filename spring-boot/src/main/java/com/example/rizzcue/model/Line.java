@@ -1,13 +1,15 @@
 package com.example.rizzcue.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
-@Entity
+@Document(collection = "RizzCue")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Line {
@@ -15,6 +17,8 @@ public class Line {
     private String id;
     private String line1;
     private String line2;
-    private boolean is_nsfw;
+    @Field("is_nsfw")
+    @JsonProperty("is_nsfw")
+    private boolean isNsfw;
     private int likes;
 }
